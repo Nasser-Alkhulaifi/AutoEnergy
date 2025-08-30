@@ -1,38 +1,92 @@
 # AutoEnergy: Automated Feature Engineering for Energy Consumption Forecasting with AutoML
 
-Welcome to the AutoEnergy repository, where we present a novel approach to energy consumption forecasting by combining automated feature engineering with AutoML. This repository contains the implementation and experiments from our research, enabling the reproducibility of our results.
+This repository contains the implementation and experiments for **AutoEnergy**, an algorithm that combines automated, domain-specific feature engineering with state-of-the-art AutoML to improve energy consumption forecasting. The codebase is organised to support full reproducibility of the study.
 
-[Paper Link]()
+## Paper
+
+- Knowledge-Based Systems (Elsevier), 2025.  
+  DOI: [10.1016/j.knosys.2025.114300](http://dx.doi.org/10.1016/j.knosys.2025.114300)  
+  ScienceDirect: https://www.sciencedirect.com/science/article/pii/S0950705125013413
 
 ## Citation
 
-- The paper is currently under review. The full code and dataset will be released upon paper acceptance.
-- The trained model weights are released.
-- You can check our preliminary work [here](https://ieeexplore.ieee.org/abstract/document/10831959).
+If you use this repository, please cite:
 
+```bibtex
+@article{Alkhulaifi2025,
+  title     = {AutoEnergy: An automated feature engineering algorithm for energy consumption forecasting with AutoML},
+  author    = {Alkhulaifi, Nasser and Bowler, Alexander L. and Pekaslan, Direnc and Watson, Nicholas J. and Triguero, Isaac},
+  journal   = {Knowledge-Based Systems},
+  volume    = {329},
+  pages     = {114300},
+  year      = {2025},
+  month     = nov,
+  publisher = {Elsevier BV},
+  doi       = {10.1016/j.knosys.2025.114300},
+  url       = {http://dx.doi.org/10.1016/j.knosys.2025.114300},
+  issn      = {0950-7051}
+}
+```
 
-## Research Overview
+Related earlier work:
+- Preliminary study (IEEE Xplore): https://ieeexplore.ieee.org/abstract/document/10831959
 
-The AutoEnergy algorithm integrates automated feature engineering with state-of-the-art AutoML frameworks to enhance the accuracy of energy consumption forecasting. Key contributions include:
+## Overview
 
-- A domain-specific feature extraction framework for energy time series data
-- Integration with leading AutoML frameworks (AutoGluon, TabPFN)
-- A comprehensive evaluation on 18 real-world energy consumption datasets
-- An open-source implementation for result reproducibility
+**AutoEnergy** automates feature design for energy time-series, then leverages robust AutoML frameworks for model selection and hyperparameter tuning. Key contributions:
 
-## Running Experiments
+- A domain-specific feature extraction framework for energy time-series.
+- Integration with leading AutoML frameworks (AutoGluon, TabPFN).
+- Comprehensive evaluation on 18 real-world energy consumption datasets.
+- Open, reproducible pipeline with released trained model weights.
 
-To run the full experiment, execute the `main.py` file. If computational resources are a concern, begin by running `stage1_preprocess.py`, which applies the AutoEnergy algorithm and benchmarking methods to all datasets, saving the processed data for training. Afterward, run `stage2_train_evaluate.py` to train and evaluate the model using AutoGluon.
+## Installation
 
-Additionally, you can run the TabPFN model by executing the `tabpfn_test_env.ipynb` notebook, which contains the necessary setup and environment to test AutoEnergy algorithm with TabPFN on the energy datasets.
+- Python ≥ 3.8
+- Install dependencies:
+  ```bash
+  pip install -r requirements.txt
+  ```
 
-## Requirements
+## Usage
 
-- Python 3.8+
-- Dependencies listed in requirements.txt
+### Full pipeline
+Run the complete experiment pipeline:
+```bash
+python main.py
+```
+
+### Step-by-step
+1. **Preprocess datasets** (applies AutoEnergy and baselines; caches processed outputs):
+   ```bash
+   python stage1_preprocess.py
+   ```
+2. **Train and evaluate with AutoGluon**:
+   ```bash
+   python stage2_train_evaluate.py
+   ```
+
+### TabPFN experiments
+Use the Jupyter notebook to evaluate TabPFN on the energy datasets:
+```text
+tabpfn_test_env.ipynb
+```
+
+## Repository Contents
+
+- `main.py` — end-to-end experiment runner.
+- `stage1_preprocess.py` — data loading, feature engineering, and benchmark preprocessing.
+- `stage2_train_evaluate.py` — model training/evaluation with AutoGluon.
+- `tabpfn_test_env.ipynb` — TabPFN testing environment and examples.
+- `requirements.txt` — Python dependencies.
+
+## Reproducibility
+
+- Deterministic seeds are set where supported by the underlying libraries.
+- Processed artefacts from Stage 1 are reused by Stage 2 to ensure consistent splits and features.
+- Trained model weights are released in this repository.
 
 ## Contact
-For questions or issues, please contact:
-Nasser Alkhulaifi (nasser.alkhulaifi@nottingham.ac.uk)
 
-
+For questions or issues:
+- **Nasser Alkhulaifi** — nasser.alkhulaifi@nottingham.ac.uk
