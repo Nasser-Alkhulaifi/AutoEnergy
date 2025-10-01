@@ -1,0 +1,13 @@
+autogluon==1.2
+dask==2025.1.0
+feature_engine==1.8.0
+featuretools==1.31.0
+tsfresh == 0.20.3
+numpy==2.2.2
+pandas==2.2.3
+psutil==6.1.1
+scikit_learn==1.4.0
+scipy==1.15.1
+tqdm==4.66.4
+tabpfn==2.1.1
+
